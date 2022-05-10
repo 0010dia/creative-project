@@ -5,20 +5,22 @@
 
 <mapper namespace="mapper.AdminMapper">
     <resultMap id="result" type="persistence.dto.AdminDTO">
+        <id column="PNO" property="no" />
         <result property="admin_id" column="admin_id"/>
         <result property="admin_password" column="admin_password"/>
         <result property="admin_name" column="admin_name"/>
     </resultMap>
     <select id="selectAll" resultMap="result">
-        SELECT * FROM database.Admin;
+        select * FROM Admin;
     </select>
     <update id="updateAll">
-        UPDATE database.Admin set admin_id = #{admin_id} , admin_password = #{admin_password}, admin_name = #{admin_name};
+        update Admin set admin_id = #{admin_id} , admin_password = #{admin_password}, admin_name = #{admin_name}
     </update>
     <insert id="insert">
-        INSERT INTO union.subject (sCode, sName, credit, grade, semester) values (#{sCode}, #{sName}, #{credit}, #{grade}, #{semester});
+        insert into Admin (admin_id, admin_password, admin_name) values (#{admin_id}, #{admin_password}, #{admin_name})
     </insert>
     <delete id="delete">
-        DELETE FROM database.Admin;
+        delete from Admin
+        where PNO = #{no}
     </delete>
 </mapper>
