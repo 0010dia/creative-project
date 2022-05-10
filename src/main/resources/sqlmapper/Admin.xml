@@ -13,14 +13,14 @@
     <select id="selectAll" resultMap="result">
         select * FROM Admin;
     </select>
-    <update id="updateAll">
+    <update id="updateAll" parameterType="AdminDTO">
         update Admin set admin_id = #{admin_id} , admin_password = #{admin_password}, admin_name = #{admin_name}
     </update>
-    <insert id="insert">
+    <insert id="insert" parameterType="AdminDTO">
         insert into Admin (admin_id, admin_password, admin_name) values (#{admin_id}, #{admin_password}, #{admin_name})
     </insert>
-    <delete id="delete">
+    <delete id="delete" parameterType="String">
         delete from Admin
-        where PNO = #{no}
+        where admin_id = #{admin_id}
     </delete>
 </mapper>

@@ -12,14 +12,14 @@
     <select id="selectAll" resultMap="result">
         select * from Favorite;
     </select>
-    <update id="updateAll">
+    <update id="updateAll" parameterType="FavoriteDTO">
         update Favorite set user_id = #{user_id} , transaction_id = #{transaction_id}
     </update>
-    <insert id="insert">
-        insert into Favorite (user_id, transaction_id) values (#{admin_id}, #{transaction_id})
+    <insert id="insert" parameterType="FavoriteDTO">
+        insert into Favorite (user_id, transaction_id) values (#{user_id}, #{transaction_id})
     </insert>
-    <delete id="delete">
+    <delete id="delete" parameterType="String">
         delete from Favorite
-        where PNO = #{no}
+        where user_id = #{user_id} and transaction_id = #{transaction_id}
     </delete>
 </mapper>
