@@ -1,51 +1,85 @@
 package persistence;
 
-import java.sql.*;
-import java.time.LocalDateTime;
+import persistence.DAO.AdminDAO;
+import persistence.DAO.UserDAO;
+import persistence.dto.AdminDTO;
+import persistence.dto.UserDTO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String args[]){
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
+    private static UserDTO userDTO = new UserDTO();
+    private static AdminDTO adminDTO = new AdminDTO();
 
-        try{
-            //Class.forName("com.mysql.jdbc.Driver");
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/database?";
-            //String url = "jdbc:mysql://localhost/database";
-            conn = DriverManager.getConnection(url, "root", "1031324na");
+    public static UserDTO setUserDTO(){
+        String id, password, name, email;
 
-            String query = "SELECT * FROM ADMIN";
+        Scanner sc = new Scanner(System.in);
+        userDTO.setUser_id(id=sc.next());
+        userDTO.setUser_password(password = sc.next());
+        userDTO.setUser_name(name = sc.next());
+        userDTO.setUser_email(email = sc.next());
+        return userDTO;
+    }
+    public static AdminDTO setAdminDTO(){
+        String id, password, name;
 
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            while(rs.next()) {
-                String id = rs.getString("admin_id");
-                String password = rs.getString("admin_password");
-                String name = rs.getString("admin_name");
-                System.out.printf("%s | %s | %s \n", id, password, name);
-                System.out.println("-------------------------------------");
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch(SQLException e){
-            System.out.println("error : " + e);
-        }  finally{
-            try{
-                if(conn != null && !rs.isClosed()){
-                    rs.close();
-                }
-                if(conn != null && !stmt.isClosed()){
-                    rs.close();
-                }
-                if(conn != null && !conn.isClosed()){
-                    conn.close();
-                }
-            }
-            catch(SQLException e){
-                e.printStackTrace();
+        Scanner sc = new Scanner(System.in);
+        adminDTO.setAdmin_id(id=sc.next());
+        adminDTO.setAdmin_password(password = sc.next());
+        adminDTO.setAdmin_name(name = sc.next());
+        return adminDTO;
+    }
+
+    public static void main(String args[]) throws SQLException {
+        Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost:3306/database?", "root", "1031324na");
+        UserDAO userDAO = new UserDAO(conn);
+        AdminDAO adminDAO = new AdminDAO(conn);
+        Scanner sc = new Scanner(System.in);
+        int a ;
+
+        while(true) {
+            switch (a= sc.nextInt()) {
+                case 1:
+                    System.out.println(userDAO.findApart_info());
+                    break;
+                case 2:
+                    userDAO.insertUser(setUserDTO());
+                    break;
+                case 3:
+                    String b = sc.next();
+                    userDAO.deleteUser(b);
+                    break;
+                case 4:
+                    userDAO.updateUser(setUserDTO());
+                    break;
+                case 5:
+                    System.out.println(adminDAO.findAdmin());
+                    break;
+                case 6:
+                    adminDAO.insertAdmin(setAdminDTO());
+                    userDTO.setUser_id(adminDTO.getAdmin_id());
+                    userDTO.setUser_name(adminDTO.getAdmin_name());
+                    userDTO.setUser_password(adminDTO.getAdmin_password());
+                    userDTO.setUser_email("  ");
+                    userDAO.insertUser(userDTO);
+                    break;
+                case 7:
+                    String c = sc.next();
+                    adminDAO.deleteAdmin(c);
+                    break;
+                case 8:
+                    adminDAO.updateAdmin(setAdminDTO());
+                    break;
+                default:
+                    break;
             }
         }
+
+
+
     }
 }

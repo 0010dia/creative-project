@@ -5,18 +5,17 @@
 
 <mapper namespace="mapper.AdminMapper">
     <resultMap id="result" type="persistence.dto.AdminDTO">
-        <id column="PNO" property="no" />
         <result property="admin_id" column="admin_id"/>
         <result property="admin_password" column="admin_password"/>
         <result property="admin_name" column="admin_name"/>
     </resultMap>
     <select id="selectAll" resultMap="result">
-        select * FROM Admin;
+        select * from Admin;
     </select>
-    <update id="updateAll" parameterType="AdminDTO">
-        update Admin set admin_id = #{admin_id} , admin_password = #{admin_password}, admin_name = #{admin_name}
+    <update id="updateAll" parameterType="persistence.dto.AdminDTO">
+        update Admin set admin_password = #{admin_password}, admin_name = #{admin_name} where admin_id = #{admin_id}
     </update>
-    <insert id="insert" parameterType="AdminDTO">
+    <insert id="insert" parameterType="persistence.dto.AdminDTO">
         insert into Admin (admin_id, admin_password, admin_name) values (#{admin_id}, #{admin_password}, #{admin_name})
     </insert>
     <delete id="delete" parameterType="String">

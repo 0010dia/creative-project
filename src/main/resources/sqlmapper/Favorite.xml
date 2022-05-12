@@ -9,13 +9,13 @@
         <result property="user_id" column="user_id"/>
         <result property="transaction_id" column="transaction_id"/>
     </resultMap>
-    <select id="selectAll" resultMap="result">
-        select * from Favorite;
+    <select id="selectAll" resultMap="result" parameterType="persistence.dto.UserDTO">
+        select * from Favorite where user_id = #{user_id};
     </select>
-    <update id="updateAll" parameterType="FavoriteDTO">
+    <update id="updateAll" parameterType="persistence.dto.FavoriteDTO">
         update Favorite set user_id = #{user_id} , transaction_id = #{transaction_id}
     </update>
-    <insert id="insert" parameterType="FavoriteDTO">
+    <insert id="insert" parameterType="persistence.dto.FavoriteDTO">
         insert into Favorite (user_id, transaction_id) values (#{user_id}, #{transaction_id})
     </insert>
     <delete id="delete" parameterType="String">

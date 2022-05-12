@@ -13,11 +13,11 @@
     <select id="selectAll" resultMap="result">
         select * from User;
     </select>
-    <update id="updateAll" parameterType="UserDTO">
-        update User set user_id = #{user_id} , user_password = #{user_password}, user_name = #{user_name}, user_email = #{user_email}
+    <update id="updateAll" parameterType="persistence.dto.UserDTO">
+        update User set user_password = #{user_password}, user_name = #{user_name}, user_email = #{user_email} where user_id = #{user_id}
     </update>
-    <insert id="insert" parameterType="UserDTO">
-        insert into User (user_id, user_password, user_name, user_email) values (#{admin_id}, #{admin_password}, #{admin_name})
+    <insert id="insert" parameterType="persistence.dto.UserDTO">
+        insert into User (user_id, user_password, user_name, user_email) values (#{user_id}, #{user_password}, #{user_name}, #{user_email})
     </insert>
     <delete id="delete" parameterType="String">
         delete from User
