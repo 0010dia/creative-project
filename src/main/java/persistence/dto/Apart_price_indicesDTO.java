@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 
 public class Apart_price_indicesDTO {
-    private String apart_price_id;
+    private String id;
     private String region;
     private String date;
     private String price_indices;
