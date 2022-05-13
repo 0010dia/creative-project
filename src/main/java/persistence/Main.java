@@ -1,7 +1,7 @@
 package persistence;
 
-import persistence.DAO.AdminDAO;
-import persistence.DAO.UserDAO;
+import persistence.dao.AdminDAO;
+import persistence.dao.UserDAO;
 import persistence.dto.AdminDTO;
 import persistence.dto.UserDTO;
 

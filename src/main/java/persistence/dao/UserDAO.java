@@ -1,4 +1,4 @@
-package persistence.DAO;
+package persistence.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import persistence.dto.Apart_price_indicesDTO;
