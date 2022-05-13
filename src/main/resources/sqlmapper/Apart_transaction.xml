@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.Apart_transactionMapper">
+    <resultMap type="persistence.dto.Apart_transactionDTO" id="result">
+        <result column="id" property="id"/>
+        <result column="si_gun_gu" property="si_gun_gu"/>
+        <result column="road_name" property="road_name"/>
+        <result column="danji_name" property="danji_name"/>
+        <result column="area" property="area"/>
+        <result column="floor" property="floor"/>
+        <result column="build_year" property="build_year"/>
+        <result column="contract_y_m" property="contract_y_m"/>
+        <result column="contract_d" property="contract_d"/>
+        <result column="trade_amount" property="trade_amount"/>
+    </resultMap>
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM Apart_transaction
+    </select>
+    <insert id="insertPostOne" parameterType="persistence.dto.Apart_transactionDTO">
+        INSERT INTO Apart_transaction (id, si_gun_gu, road_name, danji_name, area, floor, build_year, contract_y_m, contract_d, trade_amount) values (#{id}, #{si_gun_gu}, #{road_name}, #{danji_name}, #{area}, #{floor}, #{build_year}, #{contract_y_m},#{contract_d},#{trade_amount})
+    </insert>
+    <update id="updatePostOne" parameterType="persistence.dto.Apart_transactionDTO">
+        UPDATE Apart_transaction set si_gun_gu = #{si_gun_gu}, danji_name = #{danji_name}, area = #{area}, floor = #{floor}, build_year = #{build_year}, contract_y_m = #{contract_y_m}, contract_d = #{contract_d}, trade_amount = #{trade_amount} where id = #{id}
+    </update>
+    <delete id="deletePostOne" parameterType="String">
+        DELETE FROM Apart_transaction where id = #{id}
+    </delete>
+</mapper>

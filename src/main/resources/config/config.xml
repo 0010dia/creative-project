@@ -24,9 +24,8 @@
     <mappers>
         <mapper resource="sqlmapper/User.xml"/>
         <mapper resource="sqlmapper/Admin.xml"/>
-        <mapper resource="sqlmapper/Apart_info.xml"/>
         <mapper resource="sqlmapper/Favorite.xml"/>
         <mapper resource="sqlmapper/Apart_price_indices.xml"/>
-        <mapper resource="sqlmapper/Apart_transaction_info.xml"/>
+        <mapper resource="sqlmapper/Apart_transaction.xml"/>
     </mappers>
 </configuration>

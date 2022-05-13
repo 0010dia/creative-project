@@ -1,8 +1,8 @@
 package persistence.DAO;
 
 import org.apache.ibatis.session.SqlSession;
-import persistence.dto.Apart_infoDTO;
 import persistence.dto.Apart_price_indicesDTO;
+import persistence.dto.Apart_transactionDTO;
 import persistence.dto.FavoriteDTO;
 import persistence.dto.UserDTO;
 import persistence.PooledDataSource;
@@ -68,11 +68,11 @@ public class UserDAO {
         }
     }
 
-    public List<Apart_infoDTO> findApart_info(){
-        List<Apart_infoDTO> list = null;
+    public List<Apart_transactionDTO> find_apart_info(){
+        List<Apart_transactionDTO> list = null;
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            list = session.selectList("mapper.Apart_infoMapper.selectAll");
+            list = session.selectList("mapper.Apart_transaction.selectAll");
         } finally {
             session.close();
         }

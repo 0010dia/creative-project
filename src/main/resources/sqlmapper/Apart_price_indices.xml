@@ -5,7 +5,7 @@
 
 <mapper namespace="mapper.Apart_price_indicesMapper">
     <resultMap type="persistence.dto.Apart_price_indicesDTO" id="result">
-        <result column="apart_price_id" property="apart_price_id"/>
+        <result column="id" property="id"/>
         <result column="region" property="region"/>
         <result column="date" property="date"/>
         <result column="price_indices" property="price_indices"/>
@@ -13,13 +13,13 @@
     <select id="selectAll" resultMap="result">
         SELECT * FROM Apart_price_indices
     </select>
-    <insert id="insertPostOne">
-        INSERT INTO Apart_price_indices (apart_price_id, region, date, price_indices) values (#{apart_price_id},#{region},#{date},#{price_indices})
+    <insert id="insertPostOne" parameterType="persistence.dto.Apart_price_indicesDTO">
+        INSERT INTO Apart_price_indices (id, region, date, price_indices) values (#{id},#{region},#{date},#{price_indices})
     </insert>
-    <update id="updatePostOne">
-        UPDATE Apart_price_indices set region = #{region}, date = #{date}, price_indices = #{price_indices} where apart_info_id = #{apart_info_id}
+    <update id="updatePostOne" parameterType="persistence.dto.Apart_price_indicesDTO">
+        UPDATE Apart_price_indices set region = #{region}, date = #{date}, price_indices = #{price_indices} where id = #{id}
     </update>
-    <delete id="deletePostOne">
-        DELETE FROM Apart_price_indices where apart_price_id = #{apart_price_id}
+    <delete id="deletePostOne" parameterType="String" >
+        DELETE FROM Apart_price_indices where id = #{id}
     </delete>
 </mapper>
