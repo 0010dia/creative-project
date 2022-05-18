@@ -1,11 +1,11 @@
 package persistence.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import persistence.PooledDataSource;
 import persistence.dto.Apart_price_indicesDTO;
 import persistence.dto.Apart_transactionDTO;
 import persistence.dto.FavoriteDTO;
 import persistence.dto.UserDTO;
-import persistence.PooledDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -119,6 +119,138 @@ public class UserDAO {
             list = session.selectList("mapper.Apart_price_indices.selectAll");
             session.commit();
         }finally{
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transactionAll(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectAll");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_si(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectSi");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_area(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectArea");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_build_year(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectBuildYear");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_contract(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectContract");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_trade_amount(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectTradeAmount");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_trade_amount_a(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectTradeAmountArea");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_trade_amount_b(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectTradeAmountBuildYear");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_trade_amount_c(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectTradeAmountContract");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_trade_amount_b_a(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectTradeAmountBuildYearArea");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_trade_amount_c_b(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectTradeAmountContractBuildYear");
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Apart_transactionDTO> selectApart_transaction_trade_amount_c_b_a(Apart_transactionDTO dto) {
+        List<Apart_transactionDTO> list = null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try{
+            list = session.selectList("mapper.Apart_price_indicesMapper.selectTradeAmountContractBuildYearArea");
+        }finally {
             session.close();
         }
         return list;

@@ -6,20 +6,46 @@
 <mapper namespace="mapper.Apart_price_indicesMapper">
     <resultMap type="persistence.dto.Apart_price_indicesDTO" id="result">
         <result column="id" property="id"/>
-        <result column="region" property="region"/>
         <result column="date" property="date"/>
-        <result column="price_indices" property="price_indices"/>
+        <result column="jeonguk_indices" property="jeonguk_indices"/>
+        <result column="seoul_indices" property="seoul_indices"/>
+        <result column="busan_indices" property="busan_indices"/>
+        <result column="daegu_indices" property="daegu_indices"/>
+        <result column="incheon_indices" property="incheon_indices"/>
+        <result column="gwangju_indices" property="gwangju_indices"/>
+        <result column="daejeon_indices" property="daejeon_indices"/>
+        <result column="ulsan_indices" property="ulsan_indices"/>
+        <result column = "sejong_indices" property="sejong_indices"/>
+        <result column = "Gyeonggi_indices" property="Gyeonggi_indices"/>
+        <result column = "Gangwon_indices" property="Gangwon_indices"/>
+        <result column = "Chungbuk_indices" property="Chungbuk_indices"/>
+        <result column="Chungnam_indices" property="Chungnam_indices"/>
+        <result column = "Jeonbuk_indices" property="Jeonbuk_indices"/>
+        <result column = "Jeonnam_indices" property="Jeonnam_indices"/>
+        <result column = "Gyeongbuk_indices" property="Gyeongbuk_indices"/>
+        <result column = "Gyeongnam_indices" property="Gyeongnam_indices"/>
+        <result column ="Jeju_indices" property="Jeju_indices"/>
+
+
+
     </resultMap>
     <select id="selectAll" resultMap="result">
         SELECT * FROM Apart_price_indices
     </select>
+
     <insert id="insertPostOne" parameterType="persistence.dto.Apart_price_indicesDTO">
-        INSERT INTO Apart_price_indices (id, region, date, price_indices) values (#{id},#{region},#{date},#{price_indices})
+        INSERT INTO Apart_price_indices (id, date, jeonguk_indices, seoul_indices, busan_indices, daegu_indices, incheon_indices, gwangju_indices,
+        daejeon_indices, ulsan_indices, sejong_indices, Gyeonggi_indices, Gangwon_indices, Chungbuk_indices, Chungnam_indices,
+        Jeonbuk_indices, Jeonnam_indices, Gyeongbuk_indices, Gyeongnam_indices, Jeju_indices) values (#{id},#{date},#{jeonguk_indices},#{seoul_indices}
+        ,#{busan_indices},#{daegu_indices},#{incheon_indices},#{gwangju_indices},#{daejeon_indices},
+        #{ulsan_indices},#{sejong_indices},#{Gyeonggi_indices},#{Gangwon_indices},#{Chungbuk_indices},#{Chungnam_indices},
+        #{Jeonbuk_indices},#{Jeonnam_indices},#{Gyeongbuk_indices},#{Gyeongnam_indices},#{Jeju_indices})
     </insert>
-    <update id="updatePostOne" parameterType="persistence.dto.Apart_price_indicesDTO">
-        UPDATE Apart_price_indices set region = #{region}, date = #{date}, price_indices = #{price_indices} where id = #{id}
-    </update>
+<!--    <update id="updatePostOne" parameterType="persistence.dto.Apart_price_indicesDTO">-->
+<!--        UPDATE Apart_price_indices set region = #{region}, date = #{date}, price_indices = #{price_indices} where id = #{id}-->
+<!--    </update>-->
     <delete id="deletePostOne" parameterType="String" >
         DELETE FROM Apart_price_indices where id = #{id}
     </delete>
 </mapper>
+

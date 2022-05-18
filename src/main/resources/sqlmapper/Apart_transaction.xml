@@ -19,6 +19,43 @@
     <select id="selectAll" resultMap="result">
         SELECT * FROM Apart_transaction
     </select>
+    <select id="selectSi" resultMap="result">
+        select * from Apart_transaction where si_gun_gu = #{si_gun_gu}
+    </select>
+    <select id="selectArea" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and area = #{area}
+    </select>
+    <select id="selectBuildYear" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and build_year = #{build_year}
+    </select>
+    <select id="selectContract" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and contract_y_m = #{contract_y_m}
+    </select>
+    <select id="selectTradeAmount" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and trade_amount = #{trade_amount}
+    </select>
+    <select id="selectTradeAmountArea" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and trade_amount = #{trade_amount} and area = #{area}
+    </select>
+    <select id="selectTradeAmountBuildYear" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and trade_amount = #{trade_amount} and build_year = #{build_year}
+    </select>
+    <select id="selectTradeAmountContract" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and trade_amount = #{trade_amount} and contract_y_m = #{contract_y_m}
+    </select>
+    <select id="selectTradeAmountBuildYearArea" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and trade_amount = #{trade_amount} and build_year = #{build_year} and area = #{area}
+    </select>
+    <select id="selectTradeAmountContractBuildYear" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and trade_amount = #{trade_amount} and contract_y_m = #{contract_y_m} and build_year = #{build_year}
+    </select>
+    <select id="selectTradeAmountContractBuildYearArea" resultMap="result">
+        SELECT * FROM Apart_transaction where si_gun_gu = #{si_gun_gu} and trade_amount = #{trade_amount} and contract_y_m = #{contract_y_m} and build_year = #{build_year} and area = #{area}
+    </select>
+
+
+
+
     <insert id="insertPostOne" parameterType="persistence.dto.Apart_transactionDTO">
         INSERT INTO Apart_transaction (id, si_gun_gu, road_name, danji_name, area, floor, build_year, contract_y_m, contract_d, trade_amount) values (#{id}, #{si_gun_gu}, #{road_name}, #{danji_name}, #{area}, #{floor}, #{build_year}, #{contract_y_m},#{contract_d},#{trade_amount})
     </insert>

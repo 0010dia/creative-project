@@ -90,16 +90,16 @@ public class AdminDAO {
         }
     }
 
-    public int update_apart_price_indices(Apart_price_indicesDTO dto){
-        SqlSession session = sqlSessionFactory.openSession();
-        try{
-            int count = session.update("mapper.Apart_price_indicesMapper.updatePostOne", dto);
-            session.commit();
-            return count;
-        }finally {
-            session.close();
-        }
-    }
+//    public int update_apart_price_indices(Apart_price_indicesDTO dto){
+//        SqlSession session = sqlSessionFactory.openSession();
+//        try{
+//            int count = session.update("mapper.Apart_price_indicesMapper.updatePostOne", dto);
+//            session.commit();
+//            return count;
+//        }finally {
+//            session.close();
+//        }
+//    }
 
     public int delete_apart_price_indices(String id){
         SqlSession session = sqlSessionFactory.openSession();

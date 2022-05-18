@@ -6,6 +6,11 @@
 <configuration>
     <typeAliases>
         <typeAlias alias="User" type="persistence.dto.UserDTO"/>
+        <typeAlias alias="Admin" type="persistence.dto.AdminDTO"/>
+        <typeAlias alias="Apart_price_indices" type="persistence.dto.Apart_price_indicesDTO"/>
+        <typeAlias alias="Apart_transaction" type="persistence.dto.Apart_transactionDTO"/>
+        <typeAlias alias="Favorite" type="persistence.dto.FavoriteDTO"/>
+        <package name="mapper"/>
     </typeAliases>
 
     <environments default="development">
